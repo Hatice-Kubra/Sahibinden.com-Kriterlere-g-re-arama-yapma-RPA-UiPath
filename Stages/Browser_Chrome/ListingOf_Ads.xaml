@@ -1,0 +1,919 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ListingOf_Ads" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1082.4,1225.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ListingOf_Ads_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.Core.Activities.SAP</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ListingOf_Ads" sap:VirtualizedContainerService.HintSize="475.2,1160.8" sap2010:WorkflowViewState.IdRef="Sequence_32">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="MinFiyat" />
+      <Variable x:TypeArguments="x:Int32" Name="MaxFiyat" />
+      <Variable x:TypeArguments="x:Boolean" Name="IsOptionsExist" />
+      <Variable x:TypeArguments="x:Boolean" Name="IsFiyatButtonExist" />
+      <Variable x:TypeArguments="x:Boolean" Name="IsEOButtonExist" />
+      <Variable x:TypeArguments="x:Boolean" Name="IsBYButtonExist" />
+      <Variable x:TypeArguments="x:String" Name="AnahtarKelimeler" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Assign - Anahtar Kelimeler" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[AnahtarKelimeler]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">İstanbul, Kadıköy, Satılık, Konut</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[MinFiyat]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">1000000</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[MaxFiyat]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">2000000</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Chrome - Sahibinden'" sap:VirtualizedContainerService.HintSize="433.6,768" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="b20fe1b7508aefcdb1eb9246f9f3de9d" Selector="&lt;html app='chrome.exe' title='*' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,620.8" sap2010:WorkflowViewState.IdRef="Sequence_57">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Info" Message="[&quot;Pencereye attach olundu.&quot;]" />
+            <Sequence DisplayName="Anahtar Kelimelerin Arama Barına Girilmesi" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Sahibinden.com Arama Barı'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_6" Text="[AnahtarKelimeler+ &quot;[k(enter)]&quot;]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f87e196e-4813-4092-b820-9dd235afaff4" InformativeScreenshot="8190bff034acc353867afeabeec3dfdb" Selector="&lt;html app='chrome.exe' title='Sahibinden Satılık, Kiralık, Emlak, Oto, Alışveriş Ürünleri' /&gt;&lt;webctrl tag='INPUT' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+              </ui:TypeInto>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info" Message="[&quot;Arama barına anahtar kelimeler yazıldı: &quot; + AnahtarKelimeler]" />
+            </Sequence>
+            <Sequence DisplayName="Emlak Ofisinden Seçimi" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_42">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:UiElementExists DisplayName="Element Exists 'Emlak Ofisinden Butonu '" Exists="[IsEOButtonExist]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4aa3c914-5d5b-4e6d-b13c-920912df4d57" InformativeScreenshot="468019f1bb26059649e0552f5d208923" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl aaname='                             Emlak Ofisinden' tag='A' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:UiElementExists.Target>
+              </ui:UiElementExists>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_69" Level="Info" Message="[&quot;Emlak Ofisinden butonunun ekranda olup olmama durumu kontrol edilecek.&quot;]" />
+              <If Condition="[IsEOButtonExist]" DisplayName="If - &quot;Emlak Ofisinden Butonu Var Mı?&quot;" sap:VirtualizedContainerService.HintSize="794.4,492" sap2010:WorkflowViewState.IdRef="If_10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="Sequence - &quot;Emlak Ofisinden Butonu VAR&quot;" sap:VirtualizedContainerService.HintSize="375.2,332.8" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Emlak Ofisinden '" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_23" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa1bfe38-cd96-40a5-9f79-a4b072e8f000" InformativeScreenshot="73b88aead507112bc091cfc85d4a7d7b" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl aaname='                             Emlak Ofisinden' tag='A' /&gt;" TimeoutMS="300" WaitForReady="COMPLETE" />
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_40" Level="Info" Message="[&quot;Emlak ofisinden seçimi yapıldı.&quot;]" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Sequence -  &quot;Emlak Ofisinden Butonu YOK&quot;" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_41" Level="Warn" Message="[&quot;Arama kriterlerinden biri olan 'Emlak Ofisinden' butonu bulunamadı.&quot;]" />
+                    <Throw Exception="[new Exception(&quot;Arama kriterlerinden biri bulunamadı.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_8" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Fiyat Filtrelemesi" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_49">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:UiElementExists DisplayName="Element Exists 'Fiyat Butonu'" Exists="[IsFiyatButtonExist]" sap:VirtualizedContainerService.HintSize="1716,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_7">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f31cf46a-0b76-4de1-bed2-d2c05da66552" InformativeScreenshot="47b72cafaaf58fc0035b42513ae83aac" Selector="&lt;webctrl id='_cllpsID_price' tag='DT' /&gt;" TimeoutMS="300">
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:UiElementExists.Target>
+              </ui:UiElementExists>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1716,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_70" Level="Info" Message="[&quot;Fiyat butonunun ekranda olup olmama durumu kontrol edilecek.&quot;]" />
+              <If Condition="[IsFiyatButtonExist]" DisplayName="If - &quot;Fiyat butonu ve altındaki itemlar var mı?&quot;" sap:VirtualizedContainerService.HintSize="1716,2319.2" sap2010:WorkflowViewState.IdRef="If_13">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="1296.8,2160" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:Boolean" Name="IsFiltersExist" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ImageFound DisplayName="Image Exists 'Fiyat Butonu Altındaki Itemlar'" Found="[IsFiltersExist]" sap:VirtualizedContainerService.HintSize="1255.2,107.2" sap2010:WorkflowViewState.IdRef="ImageFound_7">
+                      <ui:ImageFound.Image>
+                        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" InitialScalingFactor="1.25" Profile="Basic" TargetImageBase64="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" />
+                      </ui:ImageFound.Image>
+                      <ui:ImageFound.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="fe140eba-d734-43c1-9f90-5a1872d7c3bd">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:ImageFound.Target>
+                    </ui:ImageFound>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1255.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_71" Level="Info" Message="[&quot;Fiyat butonunun altında bulunan itemların ekranda olup olmama durumu kontrol edilecek.&quot;]" />
+                    <If Condition="[IsFiltersExist]" DisplayName="If - &quot;Fiyat Butonu Ekranda Var Mı?" sap:VirtualizedContainerService.HintSize="1255.2,1787.2" sap2010:WorkflowViewState.IdRef="If_12">
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="375.2,1276" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'Fiyat'" sap:VirtualizedContainerService.HintSize="333.6,154.4" sap2010:WorkflowViewState.IdRef="SendHotkey_8" Key="scroll" KeyModifiers="None" SpecialKey="True">
+                            <ui:SendHotkey.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b64568c1-1da7-4289-acc5-7a9e37b320d7" InformativeScreenshot="df49b1246948b39627677d2c7e58db98" Selector="&lt;webctrl id='_cllpsID_price' tag='DT' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:SendHotkey.Target>
+                          </ui:SendHotkey>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;Sayfa aşağı kaydırıldı.&quot;]" />
+                          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Min Fiyat'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_7" Text="[&quot;Minimum Fiyat: &quot; + MinFiyat.ToString]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="70f35da7-5830-4de4-ac48-b86d7509ac6e" InformativeScreenshot="e32c635cc5b848aad994b1ea95da8f18" Selector="&lt;webctrl name='price_min' tag='INPUT' type='text' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Minimum fiyat tutarı &quot; +MinFiyat.ToString+ &quot; olarak girildi.&quot;]" />
+                          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Max Fiyat'" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_8" Text="[&quot;Maksimum Fiyat: &quot; + MaxFiyat.ToString]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9d708cbd-4503-4caa-9e10-8a43056ccc41" InformativeScreenshot="e3fa5c028d2618f890381c16f403b6a6" Selector="&lt;webctrl name='price_max' tag='INPUT' type='text' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;Maksimum fiyat tutarı &quot; +MaxFiyat.ToString+ &quot; olarak girildi.&quot;]" />
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Fiyat/ARA'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_24" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dab0e883-f7ff-4eb9-81a2-7e6ae234b7a1" InformativeScreenshot="777679b3ce25053c7f58609b5175a528" Selector="&lt;webctrl parentid='searchResultLeft-price' tag='BUTTON' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;ARA butonuna tıklandı.&quot;]" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="836,1628" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:Boolean" Name="IsAraButtonExists" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Fiyat - If/Else'" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="Click_25" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="743c7408-e60f-4a17-8dd9-9ca909e2f7cf" InformativeScreenshot="c364610d5d505d697b9fe6ccdb5a328f" Selector="&lt;webctrl id='_cllpsID_price' tag='DT' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="Info" Message="[&quot;Fiyat butonuna tıklandı.&quot;]" />
+                          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Min Fiyat'" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_9" Text="[&quot;Minimum Fiyat: &quot; + MinFiyat.ToString]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="70f35da7-5830-4de4-ac48-b86d7509ac6e" InformativeScreenshot="e32c635cc5b848aad994b1ea95da8f18" Selector="&lt;webctrl name='price_min' tag='INPUT' type='text' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_47" Level="Info" Message="[&quot;Minimum fiyat tutarı &quot; +MinFiyat.ToString+ &quot; olarak girildi.&quot;]" />
+                          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Max Fiyat'" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_10" Text="[&quot;Maksimum Fiyat: &quot; + MaxFiyat.ToString]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9d708cbd-4503-4caa-9e10-8a43056ccc41" InformativeScreenshot="e3fa5c028d2618f890381c16f403b6a6" Selector="&lt;webctrl name='price_max' tag='INPUT' type='text' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_48" Level="Info" Message="[&quot;Maksimum fiyat tutarı &quot; +MaxFiyat.ToString+ &quot; olarak girildi.&quot;]" />
+                          <ui:UiElementExists DisplayName="Element Exists 'Fiyat/Ara'" Exists="[IsAraButtonExists]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_8">
+                            <ui:UiElementExists.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f73e8e10-578b-4cd0-ba06-5ea2d2cce2d3" InformativeScreenshot="c7453242405bbecfc4dc42c0da1939e1" Selector="&lt;webctrl parentid='searchResultLeft-price' tag='BUTTON' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:UiElementExists.Target>
+                          </ui:UiElementExists>
+                          <If Condition="[IsAraButtonExists]" DisplayName="If - &quot;Fiyat/Ara Butonu Ekranda Var Mı?&quot;" sap:VirtualizedContainerService.HintSize="794.4,492" sap2010:WorkflowViewState.IdRef="If_11">
+                            <If.Then>
+                              <Sequence sap:VirtualizedContainerService.HintSize="375.2,332.8" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Fiyat/Ara - If/Then'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_26" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  <ui:Click.CursorPosition>
+                                    <ui:CursorPosition Position="Center">
+                                      <ui:CursorPosition.OffsetX>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetX>
+                                      <ui:CursorPosition.OffsetY>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:CursorPosition.OffsetY>
+                                    </ui:CursorPosition>
+                                  </ui:Click.CursorPosition>
+                                  <ui:Click.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dab0e883-f7ff-4eb9-81a2-7e6ae234b7a1" InformativeScreenshot="777679b3ce25053c7f58609b5175a528" Selector="&lt;webctrl parentid='searchResultLeft-price' tag='BUTTON' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:Click.Target>
+                                </ui:Click>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info" Message="[&quot;ARA butonuna tıklandı.&quot;]" />
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_50" Level="Warn" Message="[&quot;ARA butonu ekranda bulunamadı.&quot;]" />
+                                <Throw Exception="[new Exception(&quot;ARA butonu ekranda bulunamadı.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_9" />
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_51" Level="Warn" Message="[&quot;'Fiyat' butonu ekranda bulunamadı. &quot;]" />
+                    <Throw Exception="[new SystemException(&quot;'Fiyat' butonu ekranda bulunamadı. Süreç filtreleme yapılmadan ilerleyecek.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_10" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Bina Yaşı Seçimi" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_56">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'Bina Yaşı'" sap:VirtualizedContainerService.HintSize="1338.4,154.4" sap2010:WorkflowViewState.IdRef="SendHotkey_9" Key="scroll" KeyModifiers="None" SpecialKey="True">
+                <ui:SendHotkey.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="41642fe0-cf85-422b-b767-22fac04d5e64" InformativeScreenshot="0e281414020f0f88a27a24d4aa2ebccb" Selector="&lt;webctrl id='_cllpsID_a24' tag='DT' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:SendHotkey.Target>
+              </ui:SendHotkey>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1338.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info" Message="[&quot;Sayfa aşağı kaydırıldı.&quot;]" />
+              <ui:UiElementExists DisplayName="Element Exists 'Bina Yaşı'" Exists="[IsBYButtonExist]" sap:VirtualizedContainerService.HintSize="1338.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_9">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f487ef7a-6413-4f8c-a507-a57bf02cfd42" InformativeScreenshot="e160ca1271591e1ab28d30633c946d83" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl id='_cllpsID_a812' tag='DT' /&gt;" TimeoutMS="300">
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:UiElementExists.Target>
+              </ui:UiElementExists>
+              <If Condition="[IsBYButtonExist]" DisplayName="If - &quot;Bina Yaşı butonu ekranda var mı?&quot;" sap:VirtualizedContainerService.HintSize="1338.4,3076.8" sap2010:WorkflowViewState.IdRef="If_15">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="919.2,2917.6" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ImageFound DisplayName="Image Exists 'Bina Yaşı ve çevresindeki itemlar'" Found="[IsOptionsExist]" sap:VirtualizedContainerService.HintSize="877.6,107.2" sap2010:WorkflowViewState.IdRef="ImageFound_8">
+                      <ui:ImageFound.Image>
+                        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" InitialScalingFactor="1.25" Profile="Basic" TargetImageBase64="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" />
+                      </ui:ImageFound.Image>
+                      <ui:ImageFound.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="269aee0a-f63b-4c6c-bb41-5b6d8067886c" TimeoutMS="300">
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:ImageFound.Target>
+                    </ui:ImageFound>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="877.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_72" Level="Info" Message="[&quot;Bina Yaşı ve çevresindeki itemların varlığı kontrol edilecek.&quot;]" />
+                    <If Condition="[IsOptionsExist]" DisplayName="If - &quot;Bina Yaşı Butonu ve çvresindeki kriterler ekranda var mı?&quot;" sap:VirtualizedContainerService.HintSize="877.6,2544.8" sap2010:WorkflowViewState.IdRef="If_14">
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="416.8,2385.6" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı - If/Then'" sap:VirtualizedContainerService.HintSize="375.2,107.2" sap2010:WorkflowViewState.IdRef="Click_27" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b3ea8295-466d-405a-a73a-d641d8c41e9c" InformativeScreenshot="35754c42c57deca1f72a0bffe8e5e854" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl id='_cllpsID_a812' tag='DT' /&gt;" TimeoutMS="300">
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="375.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_53" Level="Info" Message="[&quot;'Bina Yaşı' butonuna tıklandı.&quot;]" />
+                          <Sequence DisplayName="Bina Yaşı Seçme" sap:VirtualizedContainerService.HintSize="375.2,2012.8" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 0'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_28" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9fc3bb77-6946-43d3-823f-28299926089f" InformativeScreenshot="bb3c2ff4806acb203602b8263ac6ad7e" Selector="&lt;webctrl parentid='searchResultLeft-a812' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info" Message="[&quot;Bina yaşı 0 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 1'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_29" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="e670bac3635a0f13f16ebfb90f6738e2" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='44' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_55" Level="Info" Message="[&quot;Bina yaşı 1 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 2'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_30" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="5681bf0e229c2fba1db78703a5806077" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='45' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_56" Level="Info" Message="[&quot;Bina yaşı 2 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 3'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_31" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="8c48c019aff38d3e574e5558174fe0af" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='46' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_57" Level="Info" Message="[&quot;Bina yaşı 3 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 4'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_32" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="bf83d9a7e2371b4f130b057bfc63e107" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='47' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_58" Level="Info" Message="[&quot;Bina yaşı 4 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 5-10 arası'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_33" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="7b2a5fdf1f24e7f9bbccdbba2ccfc75a" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='48' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_59" Level="Info" Message="[&quot;Bina yaşı 5-10 arası olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Ara - Bina Yaşı If/Then'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_34" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="77f66f8d-83e3-4a2e-b281-8ef9892ae5fd" InformativeScreenshot="b1c9ca705f861363374a22f23ccad472" Selector="&lt;webctrl aaname='Ara' parentid='searchResultsSearchForm' tag='BUTTON' /&gt;" WaitForReady="COMPLETE">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_60" Level="Info" Message="[&quot; ARA butonuna tıklandı.&quot;]" />
+                          </Sequence>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="416.8,2105.6" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence DisplayName="Bina Yaşı Seçme" sap:VirtualizedContainerService.HintSize="375.2,2012.8" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 0'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_35" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9fc3bb77-6946-43d3-823f-28299926089f" InformativeScreenshot="bb3c2ff4806acb203602b8263ac6ad7e" Selector="&lt;webctrl parentid='searchResultLeft-a812' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_61" Level="Info" Message="[&quot;Bina yaşı 0 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 1'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_36" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="e670bac3635a0f13f16ebfb90f6738e2" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='44' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_62" Level="Info" Message="[&quot;Bina yaşı 1 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 2'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_37" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="5681bf0e229c2fba1db78703a5806077" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='45' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_63" Level="Info" Message="[&quot;Bina yaşı 2 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 3'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_38" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="8c48c019aff38d3e574e5558174fe0af" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='46' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_64" Level="Info" Message="[&quot;Bina yaşı 3 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 4'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_39" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="bf83d9a7e2371b4f130b057bfc63e107" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='47' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_65" Level="Info" Message="[&quot;Bina yaşı 4 olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Bina Yaşı = 5-10 arası'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_40" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="75c83406-44e0-4225-a9ce-dc9f8dee674a" InformativeScreenshot="7b2a5fdf1f24e7f9bbccdbba2ccfc75a" Selector="&lt;webctrl parentid='searchResultLeft-a812' tabindex='48' tag='I' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_66" Level="Info" Message="[&quot;Bina yaşı 5-10 arası olarak seçildi.&quot;]" />
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Ara - Bina Yaşı If/Else'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_41" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="77f66f8d-83e3-4a2e-b281-8ef9892ae5fd" InformativeScreenshot="b1c9ca705f861363374a22f23ccad472" Selector="&lt;webctrl aaname='Ara' parentid='searchResultsSearchForm' tag='BUTTON' /&gt;" WaitForReady="COMPLETE">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_67" Level="Info" Message="[&quot; ARA butonuna tıklandı.&quot;]" />
+                          </Sequence>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_68" Level="Warn" Message="[&quot;'Bina Yaşı' butonu ekranda bulunamadı.&quot;]" />
+                    <Throw Exception="[new SystemException(&quot;'Bina Yaşı' butonu ekranda bulunamadı.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_11" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+  </Sequence>
+</Activity>
